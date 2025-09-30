@@ -1,3 +1,7 @@
+import asyncio
+import sys
+import os
+
 import os
 import logging
 import json
@@ -22,6 +26,13 @@ from aiogram.utils.markdown import hbold, hitalic
 
 import openai
 from dotenv import load_dotenv
+
+
+
+# Для корректного запуска на Render
+if __name__ == "__main__":
+    # Убедимся что рабочий директорий правильный
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 # Загружаем переменные окружения
 load_dotenv()
