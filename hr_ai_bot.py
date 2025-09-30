@@ -1651,12 +1651,14 @@ async def cmd_slots(message: types.Message, state: FSMContext):
 
 
 # Запуск бота
-async def main():
-    logger.info("Бот запущен")
-    await dp.start_polling(bot)
-
-
 if __name__ == "__main__":
-    import asyncio
+    # Для Render - используем asyncio.run()
+    logger.info("🟢 Бот запускается...")
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        logger.info("🔴 Бот остановлен")
+    except Exception as e:
+        logger.error(f"❌ Критическая ошибка: {e}")
+        sys.exit(1)
 
-    asyncio.run(main())
